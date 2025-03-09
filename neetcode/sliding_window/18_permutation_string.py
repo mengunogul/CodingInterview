@@ -8,6 +8,7 @@ An incremental sliding window approach is used with O(n) time complexity.
 from collections import Counter
 from typing import Counter as CounterType  # for type annotation
 
+
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
         """
@@ -26,7 +27,7 @@ class Solution:
 
         s1_counter: CounterType[str] = Counter(s1)
         window_counter: CounterType[str] = Counter(s2[:len_s1])
-        
+
         # Check first window
         if window_counter == s1_counter:
             return True
@@ -38,11 +39,11 @@ class Solution:
             window_counter[left_char] -= 1
             if window_counter[left_char] == 0:
                 del window_counter[left_char]
-            
+
             # Add the new right character.
             right_char: str = s2[i]
             window_counter[right_char] = window_counter.get(right_char, 0) + 1
-            
+
             if window_counter == s1_counter:
                 return True
         return False
