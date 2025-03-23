@@ -26,18 +26,12 @@ class Solution:
     def lowestCommonAncestor(
         self, root: TreeNode, p: TreeNode, q: TreeNode
     ) -> TreeNode:
-        """
-        Find the lowest common ancestor of nodes p and q in a BST.
-        """
-        current = root
-        while current:
-            if p.val > current.val and q.val > current.val:
-                current = current.right  # type:ignore
-            elif p.val < current.val and q.val < current.val:
-                current = current.left  # type:ignore
-            else:
-                return current
-        raise ValueError("Lowest common ancestor not found")
+        if root.val > p.val and root.val > q.val and root.left is not None:
+            return self.lowestCommonAncestor(root.left, p, q)
+        elif root.val < p.val and root.val < q.val and root.right is not None:
+            return self.lowestCommonAncestor(root.right, p, q)
+        else:
+            return root
 
 
 def build_tree(nodes: List[Optional[int]]) -> Optional[TreeNode]:
