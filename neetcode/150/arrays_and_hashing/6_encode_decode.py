@@ -7,11 +7,10 @@ from typing import List
 
 
 class Solution:
-
     def encode(self, strs: List[str]) -> str:
         """
         Encode a list of strings to a single string using length-prefixed encoding.
-        
+
         :param strs: List of strings to encode.
         :return: Encoded string.
         """
@@ -23,7 +22,7 @@ class Solution:
     def decode(self, s: str) -> List[str]:
         """
         Decode a single string back to a list of strings using the length-prefix scheme.
-        
+
         :param s: Encoded string.
         :return: List of decoded strings.
         """
@@ -39,17 +38,17 @@ class Solution:
             i = j + 1 + length
         return decoded
 
-    
+
 if __name__ == "__main__":
     sol = Solution()
-    
+
     # Test with non-empty list
     original_strings = ["Hello", "world", "this", "is", "a", "test"]
     encoded = sol.encode(original_strings)
     print("Encoded string:", encoded)
     decoded = sol.decode(encoded)
     print("Decoded list:", decoded)
-    
+
     # Verify round-trip
     assert decoded == original_strings, "Round-trip encoding/decoding failed!"
     print("Success: Decoded list matches the original strings.")

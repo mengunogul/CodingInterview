@@ -5,6 +5,7 @@ This module implements binary search to locate a target value within a sorted li
 
 from typing import List
 
+
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
         """
@@ -20,10 +21,10 @@ class Solution:
         # For very small lists, do a quick check.
         if len(nums) < 2 and target not in nums:
             return -1
-        
+
         left = 0
         right = len(nums) - 1
-        
+
         # Continue while there is a valid search range.
         while left <= right:
             mid = (left + right) // 2  # Find the middle index.
@@ -33,11 +34,12 @@ class Solution:
                 left = mid + 1  # Search the right half.
             else:
                 right = mid - 1  # Search the left half.
-        
+
         # Target was not found in the list.
         return -1
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     sol = Solution()
     # Test binary search with an example sorted list.
     nums = [-1, 0, 2, 4, 6, 8]
